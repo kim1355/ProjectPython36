@@ -8,6 +8,8 @@ from django.db import models
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
-
 def index(request):
     return HttpResponse("hello world!!!")
+
+def hello(request):
+    pass
