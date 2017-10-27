@@ -22,7 +22,7 @@ def search_db():
         connection.commit()
     finally:
         connection.close()
-    return result
+        return result
 
 
 def index(request):
