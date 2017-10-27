@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!-- <html> -->
+<!-- <head> -->
+	<!-- <title>HELLO world</title> -->
+<!-- </head> -->
+<!-- <body> -->
+<!-- I can play. -->
+<!-- </body> -->
+<!-- </html> -->
+
+<!--{{string}} -->
+
+
+<!-- 教程列表： -->
+<!-- {% for i in TutorialList %} -->
+<!-- {{ i }} -->
+<!-- {% endfor %} -->
+
+
+
+<!-- <br>站点：{{ info_dict.site }} <br>内容：{{ info_dict.content }} <br>年龄：{{ info_dict.age }} -->
+<h1 style="background-color:red;text-align:center;font-size:20px;"> 姓：{{ employee.FIRST_NAME }} </h1>
+<h2 style="background-color:green;font-size:20px;"> 名：{{ employee.LAST_NAME }} </h2>
+<a style="font-family:arial;color:red;font-size:20px;"> 性别：{{ employee.SEX }} </a>
+<br> 年龄：{{ employee.AGE }}
+
+<br><a href="http://www.baidu.com" target="_blank"> 百度 </a>
+<script>
+function myFunction1()
+{
+    alert("你好，我是一个警告框！");
+}
+</script>
+<br><input type="button" onclick="myFunction1()" value="显示警告框">
+
+
+<p>点击按钮，显示确认框。</p>
+<button onclick="myFunction2()">点我</button>
+<p id="demo"></p>
+<script>
+function myFunction2(){
+	var x;
+    var y;
+	var r=confirm("按下按钮!");
+	if (r==true){
+		x="你按下了\"确定\"按钮!";
+	}
+	else{
+		x="你按下了\"取消\"按钮!";
+	}
+	document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+
+<!-- <br>获取当前用户：{{ request.user }} -->
+<!-- <br>获取当前路径：{{ request.path }} -->
+<!-- <br>获取当前 GET 参数：{{ request.GET.urlencode }} -->
+<!-- <br> -->
+<!-- <a href="{{ request.path }}?{{ request.GET.urlencode }}&delete=1">当前网址加参数 delete</a> -->
+<!-- <br> -->
+
+<!-- {% if request.user.is_authenticated %} -->
+    <!-- {{ request.user.username }}，您好! -->
+<!-- {% else %} -->
+    <!-- 请登陆，这里放登陆链接 -->
+<!-- {% endif %} -->
+
+
+{#<html>#}
+{#<body>#}
+{#<form action="http:\\www.baidu.com" method="get"> <!-- 将http这修改为后台地址  method get/post 与后台的要一致 -->#}
+{#<input type="text" name='text'> <!-- 这里就收参数name要与后台一致 -->#}
+{# #}
+{#<input type="submit">#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
