@@ -32,13 +32,13 @@ def getGoods(html):
         citys.append(re.compile('<span class="city">(.*?)</span>').findall(str(i)))
 
     # 创建目录
-    for i in names:
-        i = 'E:\\taobaoModels\%s' % i
-        path = i.strip()
-        isExists = os.path.exists(path)
-        if not isExists:
-            os.makedirs(path)
-        os.chdir(path)
+    # for i in names:
+    #     i = 'E:\\taobaoModels\%s' % i
+    #     path = i.strip()
+    #     isExists = os.path.exists(path)
+    #     if not isExists:
+    #         os.makedirs(path)
+    #     os.chdir(path)
 
     # 保存图片
     img = BeautifulSoup(html, 'html.parser').select('.img')
@@ -57,19 +57,19 @@ def getGoods(html):
     for i in range(len(names)):
         try:
             data_img = requests.get(imgs_cur[i])
-            f1 = open('E:\\taobaoModels\%s\靓照.jpg' % names[i], 'wb')
+            # f1 = open('E:\\taobaoModels\%s\靓照.jpg' % names[i], 'wb')
+            f1 = open('E:\\taobaoModels\%s_%s.jpg' % (names[i], citys[i]), 'wb')
             f1.write(data_img.content)
             f1.close()
         except:
-            f1.close()
             continue
 
     # 保存资料
-    for i in range(len(names)):
-        data_doc = '模特昵称：' + str(names[i]) + '  ' + '所在城市：' + str(citys[i])
-        f2 = open('E:\\taobaoModels\%s\资料.txt' % names[i], 'w')
-        f2.write(data_doc)
-        f2.close()
+    # for i in range(len(names)):
+    #     data_doc = '模特昵称：' + str(names[i]) + '  ' + '所在城市：' + str(citys[i])
+    #     f2 = open('E:\\taobaoModels\%s\资料.txt' % names[i], 'w')
+    #     f2.write(data_doc)
+    #     f2.close()
 
     # pandas 展示
     L5 = []
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     driver = webdriver.Chrome()
     driver.get("https://mm.taobao.com/search_tstar_model.htm?spm=5679.126488.640745.2.19accbafwIHQLI")
     time.sleep(3)
-    for i in range(1, 100):
+    for i in range(1, 50):
         driver.find_element_by_css_selector('.page-skip').clear()
         driver.find_element_by_css_selector('.page-skip').send_keys(i)
         driver.find_element_by_css_selector('.page-btn').click()
