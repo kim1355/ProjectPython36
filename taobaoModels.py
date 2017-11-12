@@ -54,19 +54,22 @@ def getGoods(html):
         h = 'http://gtd' + h + 'jpg'
         imgs_cur.append(h)
 
-    # for i in range(len(names)):
-    #     data_img = requests.get(imgs_cur[i])
-    #     time.sleep(1)
-    #     f = open('E:\\taobaoModels\%s\靓照.jpg' % names[i], 'wb')
-    #     f.write(data_img.content)
-    #     f.close()
+    for i in range(len(names)):
+        try:
+            data_img = requests.get(imgs_cur[i])
+            f1 = open('E:\\taobaoModels\%s\靓照.jpg' % names[i], 'wb')
+            f1.write(data_img.content)
+            f1.close()
+        except:
+            f1.close()
+            continue
 
     # 保存资料
     for i in range(len(names)):
         data_doc = '模特昵称：' + str(names[i]) + '  ' + '所在城市：' + str(citys[i])
-        f = open('E:\\taobaoModels\%s\资料.txt' % names[i], 'w')
-        f.write(data_doc)
-        f.close()
+        f2 = open('E:\\taobaoModels\%s\资料.txt' % names[i], 'w')
+        f2.write(data_doc)
+        f2.close()
 
     # pandas 展示
     L5 = []
@@ -89,4 +92,4 @@ if __name__ == '__main__':
         time.sleep(5)
         html = driver.page_source
         getGoods(html)
-        driver.close()
+    driver.close()
