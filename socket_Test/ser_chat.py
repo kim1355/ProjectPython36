@@ -20,22 +20,21 @@ S.listen(5)
 print('--聊天室服务端--')
 
 connect, address = S.accept()
-true = True
+
 def rcv_data():
-    global true
-    while true:
+    while True:
         r_data = connect.recv(1024).decode('utf8')      # decode 将 bytes 转为 str
         if r_data == 'exit':
-            true = False
+            break
         print('Client[' + str(address) + ']> ' + r_data)
         print('Client[' + str(address) + ']> ' + '--%s--' % str(time.ctime(time.time())))
 
 t = Thread(target=rcv_data, name='Thread-rcv', args=())
 t.start()
 
-while true:
+while True:
     s_data = input('Server> ').encode('utf8')     # encode 将 str 转为 bytes
     connect.send(s_data)
     if s_data == 'exit':
-        true = False
+        break
 S.close()
