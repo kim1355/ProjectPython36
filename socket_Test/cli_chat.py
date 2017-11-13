@@ -12,6 +12,7 @@
 import socket
 import time
 from threading import Thread
+import sys
 
 C = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 C.connect(('127.0.0.1', 12345))  # 需要IP和port 组成元组
@@ -21,7 +22,7 @@ def rcv_data():
     while True:
         r_data = C.recv(1024).decode('utf8')  # decode 将 bytes 转为 str
         if r_data == 'exit':
-            break
+            sys.exit()
         print('Server> ' + r_data)
         print('Server> ' + '--%s--' % str(time.ctime(time.time())))
 
@@ -32,5 +33,5 @@ while True:
     s_data = input('Client> ').encode('utf8')  # encode 将 str 转为 bytes
     C.send(s_data)
     if s_data == 'exit':
-        break
+        sys.exit()
 C.close()
