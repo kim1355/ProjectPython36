@@ -20,9 +20,9 @@ S.bind(('127.0.0.1', 12345))  # 需要IP和port 组成元组
 S.listen(5)
 print('--聊天室服务端--')
 
-connect, address = S.accept()
+# connect, address = S.accept()
 
-def rcv_data():
+def rcv_data(connect):
     while True:
         r_data = connect.recv(1024).decode('utf8')      # decode 将 bytes 转为 str
         if r_data == 'exit':
@@ -30,10 +30,11 @@ def rcv_data():
         print('Client[' + str(address) + ']> ' + r_data)
         print('Client[' + str(address) + ']> ' + '--%s--' % str(time.ctime(time.time())))
 
-t = Thread(target=rcv_data, name='Thread-rcv', args=())
-t.start()
-
 while True:
+    connect, address = S.accept()
+    t = Thread(target=rcv_data, name='Thread-rcv', args=(connect,))
+    t.start()
+
     s_data = input('Server> ').encode('utf8')     # encode 将 str 转为 bytes
     connect.send(s_data)
     if s_data == 'exit':
