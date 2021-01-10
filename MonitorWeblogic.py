@@ -19,7 +19,7 @@ import logging.handlers
 LOG_FILE = 'MonitorWeblogic.log'
 
 # 实例化handler,文件大小10MB，超出则创建新的文件
-handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=10240 * 1024, backupCount=5)
+handler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=10240 * 1024, backupCount=5, encoding="utf-8")
 fmt = '%(asctime)s - %(filename)s:%(lineno)s - %(name)s - %(message)s'
 
 formatter = logging.Formatter(fmt)  # 实例化formatter
@@ -102,8 +102,8 @@ if __name__ == '__main__':
         logger.info('%s   disk usage is:%s%%' % (disk_id[0], 100 - disk_percent[0]))
         logger.info('%s   disk usage is:%s%%' % (disk_id[1], 100 - disk_percent[1]))
 
-        if mem_status > 5120:
-            restart_web()
-        else:
-            pass
+        # if mem_status > 5120:
+        #     restart_web()
+        # else:
+        #     pass
         time.sleep(15)

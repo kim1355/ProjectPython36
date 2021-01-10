@@ -81,6 +81,7 @@ def getGoods(html):
     df.columns = ['模特昵称', '所在城市', '照片链接']
     print(df)
 
+
 if __name__ == '__main__':
     driver = webdriver.Chrome()
     driver.get("https://mm.taobao.com/search_tstar_model.htm?spm=5679.126488.640745.2.19accbafwIHQLI")

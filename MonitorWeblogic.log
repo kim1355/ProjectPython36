@@ -1,0 +1,6 @@
+2021-01-10 14:48:46,432 - MonitorWeblogic.py:32 - tst_logger - first info message
+2021-01-10 14:48:46,432 - MonitorWeblogic.py:33 - tst_logger - first debug message
+2021-01-10 14:48:48,434 - MonitorWeblogic.py:94 - tst_logger - cpu usage is:0.9%
+2021-01-10 14:48:48,434 - MonitorWeblogic.py:98 - tst_logger - memory usage is:6056.6484375 MB
+2021-01-10 14:48:48,435 - MonitorWeblogic.py:102 - tst_logger - C   disk usage is:41.7%
+2021-01-10 14:48:48,435 - MonitorWeblogic.py:103 - tst_logger - D   disk usage is:97.4%

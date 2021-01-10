@@ -12,8 +12,8 @@
 from selenium import webdriver
 import os
 import pytesser3
-import sys,time
-from PIL import Image,ImageEnhance
+import sys, time
+from PIL import Image, ImageEnhance
 
 options = webdriver.ChromeOptions()
 '''模拟手机浏览器'''
@@ -34,10 +34,10 @@ left = element.location['x']
 right = element.location['x'] + element.size['width']
 top = element.location['y']
 bottom = element.location['y'] + element.size['height']
-print(left,right,top,bottom)
+print(left, right, top, bottom)
 im = Image.open('E:\\test.jpg')
-box = (left, top, right, bottom)   # 设置要裁剪的区域
-region = im.crop(box)        # 此时，region是一个新的图像对象
+box = (left, top, right, bottom)  # 设置要裁剪的区域
+region = im.crop(box)  # 此时，region是一个新的图像对象
 # region.show()                # 显示图像
 driver.close()
 region.save('E:\\region.jpg')
